@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import EixosTematico from '../../layouts/EixosTematico.astro';
+
+export async function getStaticPaths() {
+	const eixos = await getCollection('eixosTematicos');
+	return eixos.map((eixo) => ({
+		params: { slug: eixo.id },
+		props: eixo,
+	}));
+}
+
+const eixo = Astro.props;
+
+---
+<EixosTematico {...eixo.data}>
+</EixosTematico>

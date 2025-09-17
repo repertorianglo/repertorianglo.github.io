@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import SubHeader from '../components/SubHeader.astro';
+import { eixosTematicos } from '../common/eixosTematicos';
+import type { Link, EixoTematico } from "../common/types";
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'eixosTematicos'>['data'];
+
+const { href, title, description, image } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="RepertoriAnglo | Eixos Temáticos" description={description ?? ''} />
+		<style>
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--primary));
+			}
+			.title {
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header hasSubheader />
+		<SubHeader links={eixosTematicos as Link[]} />
+		<main>
+			<article>
+				<div class="hero-image">
+					{image && <Image width={600} height={300} src={image} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title">
+						<h1 class="text-5xl font-bold"> {title} </h1>
+						<p class="text-center"> {description} </p>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

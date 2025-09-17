@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import HeaderLink from './HeaderLink.astro';
+
+type Props = HTMLAttributes<'a'>;
+
+const { href, class: className, ...props } = Astro.props;
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+---
+
+<div class="relative flex justify-center">
+    <HeaderLink href={href} class={className} {...props}>
+        <slot />
+    </HeaderLink>
+    <div class={`w-full h-[4px] absolute ${isActive ? ' bg-[var(--blue-anglo)]' : ''}`} style="bottom: 0px"></div>
+</div>

@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { eixosTematicos } from '../common/eixosTematicos';
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="h-screen flex flex-col justify-between">
+		<Header />
+		<main class="flex-grow w-full">
+			<div class="w-full max-w-4xl mx-auto px-4">
+				<div class="relative flex justify-center items-center mb-8">
+					<div class="absolute left-0 lg:left-[158px] hidden lg:block">
+						<img src="/anglo_logo.png" alt="Astro logo" width="72" height="72" />
+					</div>
+					<div class="pl-8 font-bold">
+						<h2 class="text-[color:var(--color-primary)] text-5xl">RepertoriAnglo</h2>
+					</div>
+				</div>
+				<p class="flex justify-center text-center">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non est sit amet augue aliquet sagittis vitae id eros. Mauris sit amet eleifend nisi, et vehicula ante. Sed non tortor urna. Integer bibendum odio mi, vitae faucibus augue varius quis.
+				</p>
+	
+				<section>
+					<ul class="flex flex-wrap w-full justify-center place-items-center">
+						{eixosTematicos.map((link, idx) => (
+							<li class="relative flex flex-col items-center justify-center w-full sm:w-1/2 p-2">
+								<a class="absolute top-[50%] translate-y-[-50%] px-8 sm:px-[50px]" href={link.href}>
+									<h5 class="text-slate-50 bg-opacity-50 px-2 py-1 rounded text-center">{link.title}</h5>
+								</a>
+								<a href={link.href}>
+									<img class="w-full h-auto rounded-lg" src={link.image} alt={link.title} />
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+	
+				<!-- <section>
+					<ul>
+						<li><a href="/blog/">← Back to all posts</a></li>
+					</ul>
+				</section> -->
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
