@@ -8,46 +8,14 @@ const subpath = pathname.match(/[^\/]+/g);
 ---
 
 <header class="mb-[2.5rem] c-bg-primary">
-	<nav class="relative flex items-center justify-between h-[30px]">
-		<div class="absolute w-full justify-center flex gap-2 h-full overflow-x-auto">
+	<nav class="relative flex items-center justify-between h-[42px]">
+		<div class="absolute w-full justify-center items-center flex gap-2 h-full overflow-x-auto overflow-y-hidden">
 			{
 				links?.map((link: Link) => {
 					const isActive = link.href === `/${pathname}` || link.href === '/' + (subpath?.[0] || '');
-					return <HeaderLinkDiv href={link.href} class={`text-white text-sm ${isActive ? ' font-bold' : ''}`}>{link.title}</HeaderLinkDiv>;
+					return <HeaderLinkDiv href={link.href} class={`font-decoration-none text-sm py-1 text-white ${isActive ? 'bg-white/25 rounded' : ''}`} noMarker>{link.title}</HeaderLinkDiv>;
 				})
 			}
 		</div>
 	</nav>
 </header>
-<style>
-	header {
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav a {
-		/* padding: 1em 0.5em; */
-		display: flex;
-		align-items: center;
-		height: 100%;
-		text-decoration: none;
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
-</style>

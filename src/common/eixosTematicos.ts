@@ -1,44 +1,12 @@
-import type { EixoTematico } from './types';
 
-const eixosTematicos: EixoTematico[] = [
-  {
-    href: "/eixos-tematicos/meio-ambiente-e-sustentabilidade",
-    title: "Meio Ambiente e Sustentabilidade",
-    description: "Eixo temático focado em questões ambientais, conservação da natureza e práticas sustentáveis.",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/saude-e-ciencia",
-    title: "Saúde e Ciência",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/educacao",
-    title: "Educação",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/direitos-e-cidadania",
-    title: "Direitos e Cidadania",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/tecnologia-e-inovacao",
-    title: "Tecnologia e Inovação",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/cultura-e-arte",
-    title: "Cultura e Arte",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-  {
-    href: "/eixos-tematicos/questoes-sociais-e-economia",
-    title: "Questões Sociais e Economia",
-    image: "/images/blog-placeholder-2.jpg",
-  },
-];
-
-export {
-    eixosTematicos
-};
+// Helper to fetch eixosTematicos dynamically using Astro Content Collections
+// Usage: const eixos = await getEixosTematicos();
+export async function getEixosTematicos() {
+  const { getCollection } = await import('astro:content');
+  // Returns an array of entries, each with .id and .data (frontmatter)
+  const entries = await getCollection('eixosTematicos');
+  return entries.map(entry => ({
+    ...entry.data,
+    id: entry.id,
+  })).sort((a, b) => (a.order || 0) - (b.order || 0));
+}

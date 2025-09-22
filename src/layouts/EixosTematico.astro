@@ -5,13 +5,15 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import SubHeader from '../components/SubHeader.astro';
-import { eixosTematicos } from '../common/eixosTematicos';
-import type { Link, EixoTematico } from "../common/types";
+import type { Link } from "../common/types";
 import type { CollectionEntry } from 'astro:content';
+import { getEixosTematicos } from "../common/eixosTematicos";
 
 type Props = CollectionEntry<'eixosTematicos'>['data'];
 
 const { href, title, description, image } = Astro.props;
+
+const eixosTematicos = await getEixosTematicos();
 ---
 
 <html lang="en">
@@ -26,6 +28,7 @@ const { href, title, description, image } = Astro.props;
 				margin: 0 auto;
 				border-radius: 12px;
 				box-shadow: var(--box-shadow);
+				max-height: 100px;
 			}
 			.prose {
 				width: 720px;
@@ -51,13 +54,13 @@ const { href, title, description, image } = Astro.props;
 		</style>
 	</head>
 
-	<body>
+	<body style="min-height: 100vh; display: flex; flex-direction: column;">
 		<Header hasSubheader />
 		<SubHeader links={eixosTematicos as Link[]} />
-		<main>
+		<main style="flex: 1;">
 			<article>
 				<div class="hero-image">
-					{image && <Image width={600} height={300} src={image} alt="" />}
+					{image && <Image width={600} height={100} src={image} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">

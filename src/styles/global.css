@@ -121,3 +121,11 @@ hr {
 .c-bg-primary {
 	background-color: var(--primary) !important;
 }
+
+.text-blue-anglo {
+	color: var(--blue-anglo) !important;
+}
+
+.text-accent-dark {
+	color: var(--accent-dark) !important;
+}

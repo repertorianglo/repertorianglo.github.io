@@ -25,6 +25,7 @@ const eixosTematicos = defineCollection({
   // Type-check frontmatter using a schema
   schema: ({ image }) =>
     z.object({
+      order: z.number().optional(),
       href: z.string(),
       title: z.string(),
       description: z.string(),

@@ -3,7 +3,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { eixosTematicos } from '../common/eixosTematicos';
+import { getEixosTematicos } from '../common/eixosTematicos';
+import { Image } from 'astro:assets';
+
+const eixosTematicos = await getEixosTematicos();
 
 ---
 
@@ -21,22 +24,31 @@ import { eixosTematicos } from '../common/eixosTematicos';
 						<img src="/anglo_logo.png" alt="Astro logo" width="72" height="72" />
 					</div>
 					<div class="pl-8 font-bold">
-						<h2 class="text-[color:var(--color-primary)] text-5xl">RepertoriAnglo</h2>
+						<h2 class="text-[color:var(--color-primary)] text-5xl">
+						  {
+							[...'RepertoriAnglo'].map((char, index) => {
+							  if (index % 3 === 0) return <span class="text-blue-anglo">{char}</span>;
+							  if (index % 3 === 1) return <span class="text-accent-dark">{char}</span>;
+							  if (index % 3 === 2) return <span class="text-[color:var(--color-primary)]">{char}</span>;
+							  return char;
+							})
+						  }
+						</h2>
 					</div>
 				</div>
-				<p class="flex justify-center text-center">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non est sit amet augue aliquet sagittis vitae id eros. Mauris sit amet eleifend nisi, et vehicula ante. Sed non tortor urna. Integer bibendum odio mi, vitae faucibus augue varius quis.
+				<p class="text-center">
+					Um site feito por nós, alunos do <span class="font-bold">Colégio Anglo de Boituva</span>, para quem também está se preparando para o vestibular. Aqui no <span class="font-bold">RepertoriAnglo</span>, reunimos repertórios construídos em sala de aula, explicados e aplicados, para ajudar outros estudantes a estudar de forma mais leve e prática. Vem com a gente!
 				</p>
 	
 				<section>
 					<ul class="flex flex-wrap w-full justify-center place-items-center">
 						{eixosTematicos.map((link, idx) => (
-							<li class="relative flex flex-col items-center justify-center w-full sm:w-1/2 p-2">
+							<li class={`relative flex flex-col items-center justify-center w-full p-2 ${idx !== eixosTematicos.length - 1 ? ' sm:w-1/2' : ''}`}>
 								<a class="absolute top-[50%] translate-y-[-50%] px-8 sm:px-[50px]" href={link.href}>
 									<h5 class="text-slate-50 bg-opacity-50 px-2 py-1 rounded text-center">{link.title}</h5>
 								</a>
 								<a href={link.href}>
-									<img class="w-full h-auto rounded-lg" src={link.image} alt={link.title} />
+									{link.image && <Image style="max-height: 100px" src={link.image} alt="" />}
 								</a>
 							</li>
 						))}

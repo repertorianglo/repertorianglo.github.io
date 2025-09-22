@@ -1,5 +1,3 @@
-import { eixosTematicos } from "./eixosTematicos";
-
 export interface Link {
   href: string;
   title: string;

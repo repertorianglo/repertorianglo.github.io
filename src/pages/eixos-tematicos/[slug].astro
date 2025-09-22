@@ -5,7 +5,8 @@ import EixosTematico from '../../layouts/EixosTematico.astro';
 export async function getStaticPaths() {
 	const eixos = await getCollection('eixosTematicos');
 	return eixos.map((eixo) => ({
-		params: { slug: eixo.id },
+		// remove initial numbering and hyphen from slug
+		params: { slug: eixo.id.replace(/^\d+-/, '') },
 		props: eixo,
 	}));
 }
