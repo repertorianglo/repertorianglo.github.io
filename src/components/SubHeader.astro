@@ -13,17 +13,165 @@ function normalizePath(path: string) {
 ---
 
 <header class="c-bg-primary hidden lg:block">
-	<nav class="relative flex items-center justify-between h-[43px]">
-		<div class="absolute w-full justify-center items-center flex gap-2 h-full overflow-x-auto overflow-y-hidden">
+   <nav class="relative flex items-center justify-between">
+	   <div id="subheader-left-arrow" class="absolute left-0 z-2 subheader-left-arrow-bg w-1/10 flex justify-start pl-2" style="opacity:0;transition:opacity 0.3s;pointer-events:auto;">
+		   <svg id="subheader-left-arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;transform:rotate(180deg);"><polyline points="9 18 15 12 9 6"/></svg>
+	   </div>
+	   <div id="subheader-right-arrow" class="absolute right-0 z-2 subheader-right-arrow-bg w-1/10 flex justify-end pr-2" style="opacity:0;transition:opacity 0.3s;pointer-events:auto;">
+		   <svg id="subheader-right-arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;"><polyline points="9 18 15 12 9 6"/></svg>
+	   </div>
+		<div id="subheader-scroll" class="w-full py-2 flex h-full overflow-x-auto overflow-y-hidden px-2" style="align-items: center; gap: 0.5rem; white-space: nowrap;">
 			{
 				links?.map((link: Link) => {
 					// Ensure both href and pathname are compared with base
 					const current = normalizePath(pathname.replace(base, "/"));
 					const linkHref = normalizePath(link.href.replace(base, "/"));
 					const isActive = linkHref === current || (linkHref !== "/" && current.startsWith(linkHref));
-					return <HeaderLinkDiv href={link.href} class={`subheader-link font-decoration-none text-sm py-1 text-white ${isActive ? 'bg-white/25 rounded' : ''}`} noMarker>{link.title}</HeaderLinkDiv>;
+					return <HeaderLinkDiv href={link.href} class={`subheader-link font-decoration-none text-sm py-1 text-white rounded ${isActive ? 'bg-white/25 active' : ''}`} noMarker style="display: inline-block; white-space: nowrap;">{link.title}</HeaderLinkDiv>;
 				})
 			}
 		</div>
 	</nav>
+</header>
+
+<style>
+.subheader-link:not(.active):hover {
+	 background: rgba(255, 255, 255, 0.10);
+}
+
+.subheader-link.active {
+	color: white !important;
+	font-weight: 500;
+}
+
+.subheader-right-arrow-bg {
+	 height: 100%;
+	 display: flex;
+	 align-items: center;
+	 background: linear-gradient(to right, rgba(2, 19, 65,0) 0%, rgba(2, 19, 65,1) 100%);
+}
+.subheader-left-arrow-bg {
+	 height: 100%;
+	 display: flex;
+	 align-items: center;
+	 background: linear-gradient(to left, rgba(2, 19, 65,0) 0%, rgba(2, 19, 65,1) 100%);
+}
+#subheader-scroll {
+	cursor: grab;
+}
+#subheader-scroll.dragging {
+	cursor: grabbing !important;
+}
+.subheader-link {
+	user-select: text;
+	pointer-events: auto;
+}
+#subheader-scroll.dragging .subheader-link {
+	user-select: none !important;
+	pointer-events: none !important;
+}
+#subheader-scroll::-webkit-scrollbar {
+	height: 2px; /* Make scrollbar thicker */
+}
+#subheader-scroll::-webkit-scrollbar-thumb {
+	background: rgb(2, 19, 65); /* Match your menu color */
+	border-radius: 6px;
+}
+#subheader-scroll::-webkit-scrollbar-track {
+	background: rgb(2, 19, 65);
+}
+
+/* For Firefox */
+#subheader-scroll {
+	scrollbar-color: transparent;
+}
+</style>
+
+<script>
+if (typeof window !== 'undefined') {
+	window.addEventListener('DOMContentLoaded', () => {
+		const scrollDiv = document.getElementById('subheader-scroll');
+		const rightArrowDiv = document.getElementById('subheader-right-arrow');
+		const rightArrowSvg = document.getElementById('subheader-right-arrow-svg');
+		const leftArrowDiv = document.getElementById('subheader-left-arrow');
+		const leftArrowSvg = document.getElementById('subheader-left-arrow-svg');
+		function updateArrowVisibility() {
+			if (!scrollDiv || !rightArrowDiv || !leftArrowDiv) return;
+			const atEnd = Math.abs(scrollDiv.scrollWidth - scrollDiv.clientWidth - scrollDiv.scrollLeft) < 2;
+			const atStart = scrollDiv.scrollLeft < 2;
+			rightArrowDiv.style.opacity = atEnd ? '0' : '1';
+			rightArrowDiv.style.pointerEvents = atEnd ? 'none' : 'auto';
+			leftArrowDiv.style.opacity = atStart ? '0' : '1';
+			leftArrowDiv.style.pointerEvents = atStart ? 'none' : 'auto';
+			// Toggle justify-center only when scroll is visible
+			if (scrollDiv.scrollWidth <= scrollDiv.clientWidth) {
+				scrollDiv.classList.add('justify-center');
+			} else {
+				scrollDiv.classList.remove('justify-center');
+			}
+		}
+		if (scrollDiv) {
+			scrollDiv.addEventListener('scroll', updateArrowVisibility);
+		}
+		window.addEventListener('resize', updateArrowVisibility);
+		updateArrowVisibility();
+		if (rightArrowSvg && scrollDiv) {
+			rightArrowSvg.addEventListener('click', () => {
+				scrollDiv.scrollBy({ left: 100, behavior: 'smooth' });
+			});
+		}
+		if (leftArrowSvg && scrollDiv) {
+			leftArrowSvg.addEventListener('click', () => {
+				scrollDiv.scrollBy({ left: -100, behavior: 'smooth' });
+			});
+		}
+
+		// Mouse drag-to-scroll functionality
+		let isDown = false;
+		let startX: number;
+		let scrollLeft: number;
+		if (scrollDiv) {
+			scrollDiv.addEventListener('mousedown', (e) => {
+				isDown = true;
+				scrollDiv.classList.add('dragging');
+				startX = e.pageX - scrollDiv.offsetLeft;
+				scrollLeft = scrollDiv.scrollLeft;
+				dragStartTime = Date.now();
+				lastMouseX = e.clientX;
+				lastMouseY = e.clientY;
+			});
+			document.addEventListener('mouseup', () => {
+				if (!isDown) return;
+				const dragDuration = Date.now() - dragStartTime;
+				isDown = false;
+				scrollDiv.classList.remove('dragging');
+				// If drag was very short, treat as click
+				console.log(dragDuration);
+				if (dragDuration < 150) {
+					console.log('Short drag detected, treating as click');
+					// Find the link under the mouse and trigger click
+					console.log(lastMouseX, lastMouseY)
+					const el = document.elementFromPoint(lastMouseX, lastMouseY);
+					if (el && el.classList.contains('subheader-link')) {
+						(el as HTMLElement).click();
+					}
+				}
+			});
+			document.addEventListener('mousemove', (e) => {
+				if (!isDown) return;
+				e.preventDefault();
+				const x = e.pageX - scrollDiv.offsetLeft;
+				const walk = (x - startX); // Amount scrolled
+				scrollDiv.scrollLeft = scrollLeft - walk;
+				lastMouseX = e.clientX;
+				lastMouseY = e.clientY;
+			});
+			// Track mouse position for click detection
+			let dragStartTime = 0;
+			let lastMouseX = 0;
+			let lastMouseY = 0;
+		}
+	});
+}
+</script>
 </header>
