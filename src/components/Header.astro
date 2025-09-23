@@ -6,7 +6,7 @@ const { hasSubheader } = Astro.props;
 console.log(hasSubheader);
 ---
 
-<header class={!hasSubheader ? "mb-[2.5rem]" : ""}>
+<header>
 	<nav class="relative flex items-center justify-between h-[50px]">
 		<h2 class="h-full flex items-center"><a href="/">{SITE_TITLE}</a></h2>
 		<div class="absolute w-full justify-center flex gap-2 h-full">

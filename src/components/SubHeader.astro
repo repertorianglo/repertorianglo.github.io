@@ -7,13 +7,13 @@ const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
 ---
 
-<header class="mb-[2.5rem] c-bg-primary">
-	<nav class="relative flex items-center justify-between h-[42px]">
+<header class="c-bg-primary">
+	<nav class="relative flex items-center justify-between h-[43px]">
 		<div class="absolute w-full justify-center items-center flex gap-2 h-full overflow-x-auto overflow-y-hidden">
 			{
 				links?.map((link: Link) => {
 					const isActive = link.href === `/${pathname}` || link.href === '/' + (subpath?.[0] || '');
-					return <HeaderLinkDiv href={link.href} class={`font-decoration-none text-sm py-1 text-white ${isActive ? 'bg-white/25 rounded' : ''}`} noMarker>{link.title}</HeaderLinkDiv>;
+					return <HeaderLinkDiv href={link.href} class={`subheader-link font-decoration-none text-sm py-1 text-white ${isActive ? 'bg-white/25 rounded' : ''}`} noMarker>{link.title}</HeaderLinkDiv>;
 				})
 			}
 		</div>

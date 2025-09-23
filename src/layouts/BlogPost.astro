@@ -51,7 +51,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 	<body style="min-height: 100vh; display: flex; flex-direction: column;">
 		<Header />
-		<main style="flex: 1;">
+		<main class="pt-[2.5rem]" style="flex: 1;">
 			<article>
 				<div class="hero-image">
 					{heroImage && <Image width={400} height={100} src={heroImage} alt="" />}

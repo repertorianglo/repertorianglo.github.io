@@ -67,11 +67,6 @@ input {
 table {
 	width: 100%;
 }
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
@@ -128,4 +123,12 @@ hr {
 
 .text-accent-dark {
 	color: var(--accent-dark) !important;
+}
+
+a.subheader-link {
+	padding-top: calc((var(--spacing) * 1) + 1px) !important;
+}
+
+main {
+	padding-top: 2.5rem;
 }
