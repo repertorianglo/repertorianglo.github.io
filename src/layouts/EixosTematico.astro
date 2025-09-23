@@ -57,7 +57,7 @@ const eixosTematicos = await getEixosTematicos();
 	<body style="min-height: 100vh; display: flex; flex-direction: column;">
 		<Header hasSubheader />
 		<SubHeader links={eixosTematicos as Link[]} />
-		<main style="flex: 1;">
+		<main class="px-5" style="flex: 1;">
 			<div id="background-image" class="absolute top-0 left-0 w-full h-full -z-10 opacity-15">
 				<img src="/images/background.jpeg" alt="Background image" class="w-full h-full object-cover" />
 			</div>
