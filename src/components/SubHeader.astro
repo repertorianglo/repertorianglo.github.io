@@ -131,7 +131,12 @@ if (typeof window !== 'undefined') {
 		let startX: number;
 		let scrollLeft: number;
 		if (scrollDiv) {
+			function isScrollBarVisible() {
+				return scrollDiv && scrollDiv.scrollWidth > scrollDiv.clientWidth;
+			}
+
 			scrollDiv.addEventListener('mousedown', (e) => {
+				if (!isScrollBarVisible()) return;
 				isDown = true;
 				scrollDiv.classList.add('dragging');
 				startX = e.pageX - scrollDiv.offsetLeft;
@@ -141,12 +146,12 @@ if (typeof window !== 'undefined') {
 				lastMouseY = e.clientY;
 			});
 			document.addEventListener('mouseup', () => {
+				if (!isScrollBarVisible()) return;
 				if (!isDown) return;
 				const dragDuration = Date.now() - dragStartTime;
 				isDown = false;
 				scrollDiv.classList.remove('dragging');
 				// If drag was very short, treat as click
-				console.log(dragDuration);
 				if (dragDuration < 150) {
 					console.log('Short drag detected, treating as click');
 					// Find the link under the mouse and trigger click
@@ -158,6 +163,7 @@ if (typeof window !== 'undefined') {
 				}
 			});
 			document.addEventListener('mousemove', (e) => {
+				if (!isScrollBarVisible()) return;
 				if (!isDown) return;
 				e.preventDefault();
 				const x = e.pageX - scrollDiv.offsetLeft;
