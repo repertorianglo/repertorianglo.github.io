@@ -3,8 +3,13 @@ import HeaderLinkDiv from './HeaderLinkDiv.astro';
 import type { Link } from '../interfaces';
 
 const { links } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
+const base = import.meta.env.BASE_URL;
+const pathname = Astro.url.pathname;
+
+function normalizePath(path: string) {
+	// Remove trailing slash except for root
+	return path.endsWith("/") && path !== base ? path.slice(0, -1) : path;
+}
 ---
 
 <header class="c-bg-primary">
@@ -12,7 +17,10 @@ const subpath = pathname.match(/[^\/]+/g);
 		<div class="absolute w-full justify-center items-center flex gap-2 h-full overflow-x-auto overflow-y-hidden">
 			{
 				links?.map((link: Link) => {
-					const isActive = link.href === `/${pathname}` || link.href === '/' + (subpath?.[0] || '');
+					// Ensure both href and pathname are compared with base
+					const current = normalizePath(pathname.replace(base, "/"));
+					const linkHref = normalizePath(link.href.replace(base, "/"));
+					const isActive = linkHref === current || (linkHref !== "/" && current.startsWith(linkHref));
 					return <HeaderLinkDiv href={link.href} class={`subheader-link font-decoration-none text-sm py-1 text-white ${isActive ? 'bg-white/25 rounded' : ''}`} noMarker>{link.title}</HeaderLinkDiv>;
 				})
 			}
