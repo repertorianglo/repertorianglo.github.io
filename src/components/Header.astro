@@ -31,32 +31,32 @@ function toggleEixos() {
 		<h2 class="h-full flex items-center font-bold"><a class="z-10" href="/"><ColorCycleText text={SITE_TITLE} /></a></h2>
 		<div class="absolute w-full justify-center gap-2 h-full hidden lg:flex">
 			<HeaderLinkDiv href="/">Home</HeaderLinkDiv>
+			<HeaderLinkDiv href="/blog/eixos-tematicos/cultura-e-arte">Blog</HeaderLinkDiv>
 			<HeaderLinkDiv href="/about">Sobre Nós</HeaderLinkDiv>
 		</div>
 		<!-- Mobile menu overlay -->
-			<div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-black/40 flex min-h-full" style="display:none;">
-				<div class="bg-white w-64 shadow-lg p-5 flex flex-col gap-4 animate-slidein relative items-start justify-start">
-				<button id="close-menu-btn" aria-label="Fechar menu" class="absolute top-3 -right-4 rounded-full c-bg-primary p-1" style="background:none;border:none;outline:none;">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+		<div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-black/40 flex min-h-full" style="display:none;">
+			<div class="bg-white w-64 shadow-lg p-5 flex flex-col gap-4 animate-slidein relative items-start justify-start">
+			<button id="close-menu-btn" aria-label="Fechar menu" class="absolute top-3 -right-4 rounded-full c-bg-primary p-1" style="background:none;border:none;outline:none;">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+			</button>
+			<a href="/" class="py-2 px-2 rounded hover:bg-gray-100 font-medium menu-link">Home</a>
+			<a href="/about" class="py-2 px-2 rounded hover:bg-gray-100 font-medium menu-link">Sobre Nós</a>
+			<div class="w-full">
+				<button id="eixos-toggle-btn" class="w-full text-left py-2 px-2 rounded hover:bg-gray-100 font-medium flex items-center justify-between" aria-expanded="false" aria-controls="submenu-eixos">
+					Eixos Temáticos
+					<svg id="eixos-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;"><polyline points="9 18 15 12 9 6"/></svg>
 				</button>
-				<a href="/" class="py-2 px-2 rounded hover:bg-gray-100 font-medium menu-link">Home</a>
-				<a href="/about" class="py-2 px-2 rounded hover:bg-gray-100 font-medium menu-link">Sobre Nós</a>
-				<div class="w-full">
-					<button id="eixos-toggle-btn" class="w-full text-left py-2 px-2 rounded hover:bg-gray-100 font-medium flex items-center justify-between" aria-expanded="false" aria-controls="submenu-eixos">
-						Eixos Temáticos
-						<svg id="eixos-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;"><polyline points="9 18 15 12 9 6"/></svg>
-					</button>
-					<ul id="submenu-eixos" class="pl-4 mt-2 flex flex-col gap-2" style="display:none;">
-						{eixosTematicos.map((eixo) => (
-							<li>
-								<a href={eixo.href} class="block py-1 px-2 rounded hover:bg-gray-100 text-sm submenu-link">{eixo.title}</a>
-							</li>
-						))}
-					</ul>
-				</div>
+				<ul id="submenu-eixos" class="pl-4 mt-2 flex flex-col gap-2" style="display:none;">
+					{eixosTematicos.map((eixo) => (
+						<li>
+							<a href={eixo.href} class="block py-1 px-2 rounded hover:bg-gray-100 text-sm submenu-link">{eixo.title}</a>
+						</li>
+					))}
+				</ul>
 			</div>
-			<div id="menu-bg-close" style="flex:1;"></div>
 		</div>
+		<div id="menu-bg-close" style="flex:1;"></div>
 	</nav>
 </header>
 

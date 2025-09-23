@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import EixosTematico from '../../layouts/EixosTematico.astro';
+import EixosTematico from '../../../layouts/EixosTematico.astro';
 
 export async function getStaticPaths() {
 	const eixos = await getCollection('eixosTematicos');

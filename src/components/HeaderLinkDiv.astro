@@ -15,6 +15,6 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
         <slot />
     </HeaderLink>
     {!noMarker && (
-        <div class={`w-full h-[4px] absolute ${isActive ? ' bg-[var(--blue-anglo)]' : ''}`} style="bottom: 0px"></div>
+        <div class={`w-full h-[4px] absolute ${isActive ? ' bg-[var(--primary)]' : ''}`} style="bottom: 0px"></div>
     )}
 </div>
