@@ -60,7 +60,7 @@ const eixosTematicos = await getEixosTematicos();
 		<main style="flex: 1;">
 			<article>
 				<div class="hero-image">
-					{image && <Image width={600} height={100} src={image} alt="" />}
+					{image && <Image class="w-full h-full object-cover rounded-lg" style="max-width: 600px;" src={image} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">

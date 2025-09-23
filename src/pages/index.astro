@@ -47,12 +47,14 @@ const eixosTematicos = await getEixosTematicos();
 					<ul class="flex flex-wrap w-full justify-center place-items-center">
 						{eixosTematicos.map((link, idx) => (
 							<li class={`relative flex flex-col items-center justify-center w-full p-2 rounded-lg overflow-hidden${idx !== eixosTematicos.length - 1 ? ' sm:w-1/2' : ''}`}>
-								<img class="absolute -z-10 top-0 left-0 w-full object-cover p-2 rounded-lg" src="images/default-bg.jpg" alt="" style="height:100%" />
-								<a class="absolute top-[50%] translate-y-[-50%] px-8 sm:px-[50px]" href={link.href}>
-									<h5 class="text-slate-50 bg-opacity-50 px-2 py-1 rounded text-center">{link.title}</h5>
+								<div class="absolute p-2 -z-10 top-0 left-0 w-full h-full rounded-lg">
+								<img class="w-full object-cover rounded-lg" src="images/default-bg.jpg" alt="" style="height:100%" />
+								</div>
+								<a class="absolute top-[50%] translate-y-[-50%] px-8 sm:px-[50px] z-100" href={link.href}>
+									<h5 class="text-slate-50 bg-opacity-50 px-2 py-1 rounded-lg text-center">{link.title}</h5>
 								</a>
-								<a href={link.href}>
-									{link.image && <Image class="w-100 h-full object-cover opacity-30 rounded-lg" style="max-height: 100px;" src={link.image} alt="" />}
+								<a class="w-full" href={link.href}>
+									{link.image && <Image class="w-full h-full object-cover opacity-30 rounded-lg" style="max-height: 100px;" src={link.image} alt="" />}
 								</a>
 							</li>
 						))}
