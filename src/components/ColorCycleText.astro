@@ -1,0 +1,10 @@
+---
+// Props: text (string)
+const { text } = Astro.props;
+---
+{Array.from(text).map((char, index) => {
+  if (index % 3 === 0) return <span class="text-[color:var(--color-primary)]">{char}</span>;
+  if (index % 3 === 1) return <span class="text-accent-dark">{char}</span>;
+  if (index % 3 === 2) return <span class="text-blue-anglo">{char}</span>;
+  return char;
+})}
