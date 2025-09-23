@@ -86,6 +86,9 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
+			<div id="background-image" class="absolute top-0 left-0 w-full h-full -z-10 opacity-15">
+				<img src="/images/background.jpeg" alt="Background image" class="w-full h-full object-cover" />
+			</div>
 			<section>
 				<ul>
 					{
