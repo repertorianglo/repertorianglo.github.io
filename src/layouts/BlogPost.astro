@@ -6,15 +6,48 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import SubHeader from '../components/SubHeader.astro';
+import type { Link } from "../common/types";
+import { getEixosTematicos } from "../common/eixosTematicos";
+import { grupos } from '../common/pessoas';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = { 
+	postNumber: string;
+	titulo: string;
+	grupo?: number;
+	responsavel?: string;
+	criadoPor?: string;
+	dataPublicacao?: Date;
+	eixo: string;
+}
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const eixosTematicos = await getEixosTematicos();
+
+const { titulo, dataPublicacao, eixo, postNumber, grupo, responsavel, criadoPor } = Astro.props;
+
+let currentGrupo, currentResponsavel;
+if (!criadoPor && typeof grupo === 'number' && grupo >= 0 && grupo < grupos.length) {
+	currentGrupo = grupos[grupo];
+	currentResponsavel = currentGrupo.responsavel;
+}
+
+currentResponsavel = responsavel || currentResponsavel;
+
+const currentEixo = eixosTematicos.find(e => e.id === eixo);
+const eixoKebab = currentEixo?.id.replace(/^\d+-/, '')
+
+// Import hero image dynamically
+let heroImage;
+try {
+	heroImage = await import(`../assets/eixos-tematicos/${eixoKebab}/${postNumber}/hero.png`);
+} catch (error) {
+	console.warn(`Hero image not found for eixo: ${eixoKebab}`);
+}
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={`RepertoriAnglo | ${title}`} description={description} />
+		<BaseHead title={`RepertoriAnglo | ${currentEixo?.title}`} description={titulo} />
 		<style>
 			.hero-image {
 				width: 100%;
@@ -29,15 +62,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
-				padding: 1em;
 				color: rgb(var(--gray-dark));
-			}
-			.title {
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
 			}
 			.date {
 				margin-bottom: 0.5em;
@@ -50,28 +75,36 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	</head>
 
 	<body style="min-height: 100vh; display: flex; flex-direction: column;">
-		<Header />
-		<main class="pt-[2.5rem]" style="flex: 1;">
+		<Header hasSubheader />
+		<SubHeader links={eixosTematicos as Link[]} />
+		<main >
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={400} height={100} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
-					<div class="title">
+					<div class="text-center mb-8">
+						{heroImage && (
+							<div class="hero-image mb-8">
+								<Image src={heroImage.default} alt={`${titulo} - Hero Image`} width={720} height={400} />
+							</div>
+						)}
+						<h2 style="margin-top:0">{titulo}</h2>
 						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+							<FormattedDate date={dataPublicacao as Date} />
 						</div>
-						<h1>{title}</h1>
 						<hr />
+						<div class="text-left mt-2 text-sm">
+							<strong>Criado por:</strong> {currentGrupo?.alunos?.join(', ')}
+							<br />
+							<strong>Responsável:</strong> {currentResponsavel}
+						</div>
 					</div>
-					<slot />
+					<div class="text-justify">
+						<slot />
+					</div>
+					<div class="mt-8 text-center">
+						<a href={currentEixo?.href} class="inline-block px-4 py-2 c-bg-primary text-white rounded hover:bg-blue-700 transition">
+							Voltar
+						</a>
+					</div>
 				</div>
 			</article>
 		</main>

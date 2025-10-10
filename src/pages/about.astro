@@ -1,26 +1,42 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import SubHeader from '../components/SubHeader.astro';
+import { getEixosTematicos } from "../common/eixosTematicos";
+import type { Link } from "../common/types";
+const eixosTematicos = await getEixosTematicos();
 ---
 
-<Layout
-	title="Sobre Nós"
-	description="Sobre Nós"
-	pubDate={new Date('September 17 2025')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		O RepertoriAnglo é um projeto criado pelos alunos do Ensino Médio do Colégio Anglo de Boituva, com a orientação dos professores responsáveis. A proposta nasceu da vontade de transformar o estudo para o vestibular em algo mais coletivo, acessível e conectado à realidade de quem também está passando por essa fase. Aqui, reunimos conteúdos produzidos pelos próprios estudantes — textos, análises e posts em diferentes formatos — que trazem repertórios organizados e aplicados aos eixos temáticos mais cobrados em redações de vestibulares.
-	</p>
-	<p>
-		A professora Fernanda, docente de inglês, formada pelo Colégio Anglo de Boituva e graduada pela UNESP Araraquara, idealizou a eletiva Repertório Semanal ao identificar a necessidade de tornar o repertório produtivo para redação mais próximo do cotidiano dos alunos. Sua intenção é apresentar referências de forma leve e lúdica, incentivando a pesquisa como ferramenta de aprendizado.
-	</p>
+<html lang="en">
+	<head>
+		<BaseHead title="RepertoriAnglo | Sobre Nós" description='Sobre Nós' />
+	</head>
 
-	<p>
-		O professor Gustavo Gordon, de Geografia, trouxe sua experiência em geopolítica e atualidades para fortalecer o projeto, com a ideia de fomentar discussões sobre temas contemporâneos e transformá-las em notícias e análises relevantes para adolescentes.
-	</p>
+	<body style="min-height: 100vh; display: flex; flex-direction: column;">
+		<Header hasSubheader />
+		<SubHeader links={eixosTematicos as Link[]} />
+		<main class="px-5" style="flex: 1;">
+			<div id="background-image" class="absolute top-0 left-0 w-full h-full -z-10 opacity-15">
+				<img src="/images/background.jpeg" alt="Background image" class="w-full h-full object-cover" />
+			</div>
+			<article>
+				<p>
+					O RepertoriAnglo é um projeto criado pelos alunos do Ensino Médio do Colégio Anglo de Boituva, com a orientação dos professores responsáveis. A proposta nasceu da vontade de transformar o estudo para o vestibular em algo mais coletivo, acessível e conectado à realidade de quem também está passando por essa fase. Aqui, reunimos conteúdos produzidos pelos próprios estudantes — textos, análises e posts em diferentes formatos — que trazem repertórios organizados e aplicados aos eixos temáticos mais cobrados em redações de vestibulares.
+				</p>
+				<p>
+					A professora Fernanda, docente de inglês, formada pelo Colégio Anglo de Boituva e graduada pela UNESP Araraquara, idealizou a eletiva Repertório Semanal ao identificar a necessidade de tornar o repertório produtivo para redação mais próximo do cotidiano dos alunos. Sua intenção é apresentar referências de forma leve e lúdica, incentivando a pesquisa como ferramenta de aprendizado.
+				</p>
 
-	<p>
-		Assim, o RepertoriAnglo se torna um espaço de estudo e partilha: feito por alunos, para alunos, com o apoio de professores que acreditam na importância de unir repertório, reflexão crítica e criatividade.
-	</p>
-</Layout>
+				<p>
+					O professor Gustavo Gordon, de Geografia, trouxe sua experiência em geopolítica e atualidades para fortalecer o projeto, com a ideia de fomentar discussões sobre temas contemporâneos e transformá-las em notícias e análises relevantes para adolescentes.
+				</p>
+
+				<p>
+					Assim, o RepertoriAnglo se torna um espaço de estudo e partilha: feito por alunos, para alunos, com o apoio de professores que acreditam na importância de unir repertório, reflexão crítica e criatividade.
+				</p>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

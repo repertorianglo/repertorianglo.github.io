@@ -9,9 +9,14 @@ import type { Link } from "../common/types";
 import type { CollectionEntry } from 'astro:content';
 import { getEixosTematicos } from "../common/eixosTematicos";
 
-type Props = CollectionEntry<'eixosTematicos'>['data'];
+type Props = { 
+	eixo: CollectionEntry<'eixosTematicos'>['data'];
+	// conteudo: CollectionEntry<'blogTecnologiaEInovacao'>[];
+}
 
-const { href, title, description, image } = Astro.props;
+const { eixo } = Astro.props;
+
+const { title, description, image } = eixo;
 
 const eixosTematicos = await getEixosTematicos();
 ---
