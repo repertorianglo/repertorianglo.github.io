@@ -12,6 +12,7 @@ const defineBlogCollection = (name: string) =>
     schema: ({ image }) =>
       z.object({
         titulo: z.string(),
+        subtitulo: z.string().optional(),
         dataPublicacao: z.coerce.date(),
         responsavel: z.string().optional(),
         grupo: z.number().optional(),
@@ -20,8 +21,17 @@ const defineBlogCollection = (name: string) =>
   });
 
 const blog = {
-  "tecnologia-e-inovacao": defineBlogCollection('tecnologia-e-inovacao'),
-  "cultura-e-arte": defineBlogCollection('cultura-e-arte'),
+  "cultura-e-arte": defineBlogCollection("cultura-e-arte"),
+  educacao: defineBlogCollection("educacao"),
+  "meio-ambiente-e-sustentabilidade": defineBlogCollection(
+    "meio-ambiente-e-sustentabilidade"
+  ),
+  "saude-e-ciencia": defineBlogCollection("saude-e-ciencia"),
+  sociedade: defineBlogCollection("sociedade"),
+  "tecnologia-e-inovacao": defineBlogCollection("tecnologia-e-inovacao"),
+  "geopolitica-e-atualidades": defineBlogCollection(
+    "geopolitica-e-atualidades"
+  ),
 };
 
 const eixosTematicos = defineCollection({

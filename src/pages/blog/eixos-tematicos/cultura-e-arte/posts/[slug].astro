@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../../../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+	const postData = (await getCollection('cultura-e-arte'));
+	return postData.map((post) => ({
+		params: { slug: post.id },
+		props: postData.filter(p => p.id === post.id)[0],
+	}));
+}
+
+
+const post = Astro.props;
+
+const postNumber = post.id.split('-')[0];
+
+const { Content } = await render(post);
+const { titulo, subtitulo, dataPublicacao, responsavel, grupo } = post.data;
+
+---
+
+<BlogPostLayout
+	eixo="1-cultura-e-arte"
+	titulo={titulo}
+	subtitulo={subtitulo}
+	dataPublicacao={dataPublicacao}
+	postNumber={postNumber}
+	grupo={grupo}
+	responsavel={responsavel}
+>
+	<Content />
+</BlogPostLayout>

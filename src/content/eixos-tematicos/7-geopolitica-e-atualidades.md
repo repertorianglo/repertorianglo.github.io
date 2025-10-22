@@ -1,6 +1,6 @@
 ---
 href: "/blog/eixos-tematicos/geopolitica-e-atualidades"
 title: "Geopolítica e Atualidades"
-description: "Eixo temático focado em questões ambientais, conservação da natureza e práticas sustentáveis."
+description: "Eixo temático que analisa acontecimentos globais, relações de poder e os desafios contemporâneos entre nações."
 image: "../../assets/eixos-tematicos/geopolitica-e-atualidades.jpeg"
 ---

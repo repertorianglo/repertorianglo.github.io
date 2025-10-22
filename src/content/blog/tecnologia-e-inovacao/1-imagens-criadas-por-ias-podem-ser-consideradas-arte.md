@@ -1,6 +1,6 @@
 ---
 titulo: 'Imagens criadas por IAs podem ser consideradas arte?'
-dataPublicacao: '09-10-2025'
+dataPublicacao: '10-09-2025'
 grupo: 0
 ---
 

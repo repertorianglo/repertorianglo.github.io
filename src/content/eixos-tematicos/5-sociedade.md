@@ -1,6 +1,6 @@
 ---
 href: "/blog/eixos-tematicos/sociedade"
 title: "Sociedade"
-description: "Eixo temático focado em questões ambientais, conservação da natureza e práticas sustentáveis."
+description: "Eixo temático que aborda questões sociais, desigualdades, comportamento coletivo e os valores que estruturam a vida em comunidade."
 image: "../../assets/eixos-tematicos/sociedade.jpeg"
 ---

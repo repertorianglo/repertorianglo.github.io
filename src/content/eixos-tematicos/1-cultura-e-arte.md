@@ -1,6 +1,6 @@
 ---
 href: "/blog/eixos-tematicos/cultura-e-arte"
 title: "Cultura e Arte"
-description: "Eixo temático focado em questões ambientais, conservação da natureza e práticas sustentáveis."
+description: "Eixo temático dedicado à expressão artística, identidade cultural e ao papel da arte na construção de sentidos sociais."
 image: "../../assets/eixos-tematicos/cultura-e-arte.jpeg"
 ---

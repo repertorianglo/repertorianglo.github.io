@@ -14,16 +14,16 @@ export async function getStaticPaths() {
 const post = Astro.props;
 
 const postNumber = post.id.split('-')[0];
-console.log('postNumber', postNumber);
 
 const { Content } = await render(post);
-const { titulo, dataPublicacao, responsavel, grupo } = post.data;
+const { titulo, subtitulo, dataPublicacao, responsavel, grupo } = post.data;
 
 ---
 
 <BlogPostLayout
 	eixo="6-tecnologia-e-inovacao"
 	titulo={titulo}
+	subtitulo={subtitulo}
 	dataPublicacao={dataPublicacao}
 	postNumber={postNumber}
 	grupo={grupo}
