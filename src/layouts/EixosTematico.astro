@@ -26,8 +26,9 @@ const eixosTematicos = await getEixosTematicos();
 		<BaseHead title="RepertoriAnglo | Eixos Temáticos" description={description ?? ''} />
 		<style>
 			.hero-image {
-				width: 100%;
+				max-width: 100%;
 			}
+
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
@@ -37,10 +38,8 @@ const eixosTematicos = await getEixosTematicos();
 				border: 1px solid var(--primary);
 			}
 			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
+				max-width: 100%;
+				min-height: calc(100vh - 222px);
 				color: rgb(var(--primary));
 			}
 			.title {
@@ -77,14 +76,14 @@ const eixosTematicos = await getEixosTematicos();
 			<div id="background-image" class="fixed top-0 left-0 w-full h-full -z-10 opacity-15">
 				<img src="/images/background.jpeg" alt="Background image" class="w-full h-full object-cover" />
 			</div>
-			<article>
-				<div class="hero-image">
-					{image && <Image class="w-full h-full object-cover rounded-lg" style="max-width: 600px;" src={image} alt="" />}
+			<article class="pt-5">
+				<div class="hero-image w-[800px] md:px-6 mx-auto">
+					{image && <Image class="w-full h-full object-cover rounded-lg" src={image} alt="" />}
 				</div>
-				<div class="prose">
+				<div class="prose w-[800px] mx-auto py-5 md:px-6">
 					<div class="title">
-						<h1 class="text-4xl font-bold"> {title} </h1>
-						<p class="text-sm text-center mb-4"> {description} </p>
+						<h1 class="text-2xl md:text-4xl font-bold"> {title} </h1>
+						<p class="text-sm md:text-xl text-center mb-4"> {description} </p>
 						<hr />
 					</div>
 					<div class="posts-grid">

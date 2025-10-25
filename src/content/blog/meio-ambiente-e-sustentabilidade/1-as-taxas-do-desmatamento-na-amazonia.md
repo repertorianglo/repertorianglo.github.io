@@ -6,7 +6,7 @@ grupo: 1
 
 #### De 2018 a 2024, há queda de 7% 
 
-<img class="max-w-[450px]" src="/images/blog/meio-ambiente-e-sustentabilidade/1/grafico.png" alt="Gráfico">
+<img src="/images/blog/meio-ambiente-e-sustentabilidade/1/grafico.png" alt="Gráfico">
 
 <p class="text-center"><em>Fonte: imazon.org.br</em></p>
 

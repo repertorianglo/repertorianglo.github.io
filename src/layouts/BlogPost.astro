@@ -62,9 +62,8 @@ try {
 				width: auto;
 			}
 			.prose {
-				width: 720px;
 				max-width: calc(100% - 2em);
-				margin: auto;
+				min-height: calc(100vh - 222px);
 				color: rgb(var(--gray-dark));
 			}
 			.date {
@@ -80,27 +79,27 @@ try {
 	<body style="min-height: 100vh; display: flex; flex-direction: column;">
 		<Header hasSubheader />
 		<SubHeader links={eixosTematicos as Link[]} />
-		<main >
+		<main style="padding: 0px">
 			<div id="background-image" class="fixed top-0 left-0 w-full h-full -z-10 opacity-15">
 				<img src="/images/background.jpeg" alt="Background image" class="w-full h-full object-cover" />
 			</div>
 			<article>
-				<div class="prose">
-					<div class="relative" style="margin-top: -16px;">
+				<div class="prose w-[800px] mx-auto xl:bg-[#ffffff66] py-5 md:px-6">
+					<div class="relative">
 						<div class="absolute top-0 left-0">
 							<a class="flex items-center text-sm text-blue-anglo" href="#" onclick="history.back()">
 								<span class="arrow pr-1">&larr;</span> Voltar
 							</a>
 						</div>
 						<div class="text-center">
-							<div class="tabs" role="tablist" style="display:flex;gap:8px;justify-content:center;margin-top:12px;">
+							<div class="tabs" role="tablist" style="display:flex;gap:8px;justify-content:center">
 								<button id="tab-materia" role="tab" aria-selected="true" class="w-[92px] outline-0 text-xs py-1 rounded border border-emerald-700 bg-emerald-600 text-white cursor-pointer">Matéria</button>
 								<button id="tab-comentarios" role="tab" aria-selected="false" class="w-[92px] outline-0 text-xs py-1 rounded border border-gray-300 bg-gray-200 cursor-pointer">Comentários</button>
 							</div>
 
 							<div id="comments-panel" class="relative" style="display:none; margin-top:18px;">
 								<div class="absolute bg-transparent opacity-90 z-10 top-0 left-0 w-full h-full p-2 rounded" style="max-width:720px;margin:auto;">
-									<img src="/images/em_construcao.png" alt="Comentários Placeholder" style="height:100%;display:block;margin:auto;" />
+									<img src="/images/em_construcao.png" alt="Comentários Placeholder" class="img-em-construcao" />
 								</div>
 								<div class="text-left opacity-75" style="max-width:720px;margin:auto;color:rgb(var(--gray-dark));">
 									<p class="mb-2"><strong>Comentários</strong></p>
@@ -198,15 +197,15 @@ try {
 					</div>
 					<div class="text-center my-6">
 						{heroImage && (
-							<div class="hero-image mb-8">
+							<div class="hero-image mb-5 md:mb-7">
 								<Image src={heroImage.default} alt={`${titulo} - Hero Image`} width={720} height={400} />
 							</div>
 						)}
-						<h2 class="px-4 font-bold text-3xl" style="margin-top:0">{titulo}</h2>
+						<h2 class="px-4 font-bold text-2xl md:text-3xl" style="margin-top:0">{titulo}</h2>
 						{
 							subtitulo && (<h2 class="px-4 text-xs mb-2" style="margin-top:0">{subtitulo}</h2>)
 						}
-						<div class="date text-sm">
+						<div class="date text-sm mt-2">
 							<FormattedDate date={dataPublicacao as Date} />
 						</div>
 						<hr />
