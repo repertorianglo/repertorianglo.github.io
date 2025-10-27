@@ -7,16 +7,16 @@ import EixosTematico from '../../../../layouts/EixosTematico.astro';
 import { grupos } from '../../../../common/pessoas';
 
 const eixos = (await getCollection('eixosTematicos'));
-const eixo = eixos.find(e => e.id === '2-educacao');
-const posts = await getCollection('educacao');
+const eixo = eixos.find(e => e.id === '7-geopolitica-e-atualidades');
+const posts = await getCollection('geopolitica-e-atualidades');
 
 // Import hero images for each post
 const postsWithHeroImages = await Promise.all(
 	posts.map(async (post) => {
 		let heroImage;
-        console.log(`../../../../assets/eixos-tematicos/educacao/${post.id}/hero.png`)
+        console.log(`../../../../assets/eixos-tematicos/geopolitica-e-atualidades/${post.id}/hero.png`)
 		try {
-			heroImage = await import(`../../../../assets/eixos-tematicos/educacao/${post.id}/hero.png`);
+			heroImage = await import(`../../../../assets/eixos-tematicos/geopolitica-e-atualidades/${post.id}/hero.png`);
 		} catch (error) {
 			console.warn(`Hero image not found for post: ${post.id}`);
 		}
@@ -29,7 +29,7 @@ const postsWithHeroImages = await Promise.all(
 	<EixosTematico eixo={eixo.data}>
             {postsWithHeroImages.map(item => (
                 <PostCard
-                    href={`/blog/eixos-tematicos/educacao/posts/${item.id}`}
+                    href={`/blog/eixos-tematicos/geopolitica-e-atualidades/posts/${item.id}`}
                     heroImage={item.heroImage}
                     data={item.data}
                     grupos={grupos}

@@ -1,6 +1,7 @@
 ---
 titulo: 'Uso de I.A. em fevereiro de 2025'
 dataPublicacao: '10-21-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 2
 ---
 

@@ -1,6 +1,7 @@
 ---
 titulo: 'Citações atuais sobre a Tecnologia'
 dataPublicacao: '10-21-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 3
 ---
 

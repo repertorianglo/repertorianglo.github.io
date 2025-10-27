@@ -1,6 +1,7 @@
 ---
 titulo: 'Tecnologia e Inovação: o que usar de repertório?'
 dataPublicacao: '10-21-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 1
 ---
 

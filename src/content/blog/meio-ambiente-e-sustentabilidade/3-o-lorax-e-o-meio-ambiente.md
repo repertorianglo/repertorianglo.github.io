@@ -1,6 +1,7 @@
 ---
 titulo: 'O Lórax e o Meio Ambiente'
 dataPublicacao: '10-21-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 0
 ---
 

@@ -2,6 +2,7 @@
 titulo: 'Cantores como repertório cultural'
 subtitulo: 'O cantor Bad Bunny quebra barreiras ao se tornar famoso e dar voz às minorias.'
 dataPublicacao: '10-22-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 5
 ---
 

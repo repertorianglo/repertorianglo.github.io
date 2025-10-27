@@ -1,6 +1,7 @@
 ---
 titulo: 'Imagens criadas por IAs podem ser consideradas arte?'
 dataPublicacao: '10-09-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 0
 ---
 

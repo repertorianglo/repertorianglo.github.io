@@ -1,6 +1,7 @@
 ---
 titulo: 'As taxas do desmatamento na Amazônia'
 dataPublicacao: '10-22-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 1
 ---
 

@@ -1,6 +1,7 @@
 ---
 titulo: '11 milhões de toneladas por ano?'
 dataPublicacao: '10-22-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 2
 ---
 

@@ -2,6 +2,7 @@
 titulo: 'Cidade de Deus e a criminalidade nas favelas'
 subtitulo: 'Você já pensou em usar um filme de maneira produtiva na sua redação? Se sim, o filme Cidade de Deus é o repertório certo.'
 dataPublicacao: '10-21-2025'
+responsavel: 'Prof. Fernanda Sgura'
 grupo: 4
 ---
 
