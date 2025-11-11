@@ -133,6 +133,9 @@ p.no-indent {
 #post-content img {
 	margin: auto;
 	border-radius: 8px;
+}
+
+#post-content img:not(.no-max-width) {
 	max-width: 550px;
 }
 
@@ -265,4 +268,8 @@ main {
 		max-width: 100%;
 		height: auto;
 	}
+}
+
+#post-content ul.with-margin {
+	margin-left: 16px;
 }

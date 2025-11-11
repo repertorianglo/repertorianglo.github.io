@@ -12,6 +12,6 @@ criadoPor: [
 
 <div class="flex justify-center">
   <video width="600" controls>
-    <source src="/images/blog/meio-ambiente-e-sustentabilidade/3/video.mp4" type="video/mp4">
+    <source src="/resources/blog/meio-ambiente-e-sustentabilidade/3/video.mp4" type="video/mp4">
   </video>
 </div>

@@ -28,9 +28,9 @@ const { href, heroImage, data } = Astro.props;
                 <Image src={heroImage.default} alt={`${data.titulo} - Hero Image`} width={400} height={225} />
             </div>
         )}
-        <h2 class="post-title mb-2 text-sm md:text-xl leading-none md:leading-[1.3]">{data.titulo}</h2>
+        <h2 class="post-title text-sm md:text-xl leading-none md:leading-[1.3]">{data.titulo}</h2>
         {data.subtitulo && <h3 class="post-subtitle text-sm md:text-md" style="margin-bottom: calc(var(--spacing) * 1);">{data.subtitulo}</h3>}
-        <div class="post-meta text-sm md:text-md">
+        <div class="post-meta mt-1 text-sm md:text-md">
             <div class="post-date"><FormattedDate date={data.dataPublicacao} /></div>
         </div>
         {Array.isArray(data.criadoPor) && (
@@ -111,7 +111,7 @@ const { href, heroImage, data } = Astro.props;
 .post-students {
     color: rgb(var(--gray-dark));
     padding: 0.5rem 0.75rem;
-    background: rgba(var(--gray-light), 0.5);
+    background: rgba(var(--gray-light), 0.75);
     border-radius: 8px;
     border-left: 3px solid rgb(var(--blue-anglo));
 }

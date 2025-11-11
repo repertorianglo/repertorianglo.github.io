@@ -11,6 +11,6 @@ Segundo relatório da **ONU** (Programa das Nações Unidas para o Meio Ambiente
 
 Esse repertório pode ser usado em temas como ‘Os desafios da gestão de resíduos no século XXI’ ou ‘A responsabilidade ambiental na sociedade contemporânea’. Um exemplo prático é o **surgimento de ilhas de lixo nos oceanos**, como a Grande Mancha do Pacífico, que afeta ecossistemas inteiros.
 
-<img src="/images/blog/meio-ambiente-e-sustentabilidade/2/foto.webp" alt="Gráfico">
+<img src="/resources/blog/meio-ambiente-e-sustentabilidade/2/foto.webp" alt="Gráfico">
 <p class="text-center mt-1" style="margin-bottom:0px"><em>Ilha de lixo formada por plásticos nos oceanos</em></p>
 <p class="text-center"><em>(Foto: Caroline Power)</em></p>

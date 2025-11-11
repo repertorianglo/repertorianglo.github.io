@@ -18,7 +18,7 @@ criadoPor: [
 
 Em 1997, um computador avançado para jogar xadrez e desenvolvido pela IBM venceu o campeão mundial de xadrez, Garry Kasparov, em uma rodada de seis jogos. O acontecimento foi um marco histórico e significativo na inteligência artificial. 
 
-![Jogo Kasparov](/images/blog/tecnologia-e-inovacao/2/1.png)
+![Jogo Kasparov](/resources/blog/tecnologia-e-inovacao/2/1.png)
 
 #### Como você pode usar isso como repertório
 

@@ -13,9 +13,6 @@ const { eixoSlug } = Astro.params;
 const eixos = await getCollection('eixosTematicos');
 const eixo = (eixos.find(e => e.data.slug === eixoSlug as DataCollectionKey) as unknown as CollectionEntry<'eixosTematicos'>);
 const posts = await getCollection(eixoSlug as DataCollectionKey);
-console.log('eixo:', eixo);
-console.log('eixoSlug:', eixoSlug);
-console.log('posts:', posts);
 
 export async function getStaticPaths() {
 	const eixos = await getCollection('eixosTematicos');
@@ -29,7 +26,7 @@ export async function getStaticPaths() {
 const postsWithHeroImages = await Promise.all(
 	posts.map(async (post) => {
 		let heroImage;
-        console.log(`../../../../assets/eixos-tematicos/${eixoSlug}/${post.id}/hero.png`)
+        // console.log(`../../../../assets/eixos-tematicos/${eixoSlug}/${post.id}/hero.png`)
 		try {
 			heroImage = await import(`../../../../assets/eixos-tematicos/${eixoSlug}/${post.id}/hero.png`);
 		} catch (error) {
