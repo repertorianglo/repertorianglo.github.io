@@ -3,7 +3,9 @@ titulo: 'Cidade de Deus e a criminalidade nas favelas'
 subtitulo: 'Você já pensou em usar um filme de maneira produtiva na sua redação? Se sim, o filme Cidade de Deus é o repertório certo.'
 dataPublicacao: '10-21-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 4
+criadoPor: [
+    "Lavínia Novas"
+]
 ---
 
 O filme foi eleito como o 15º melhor filme do século. Além disso, como parte do cinema brasileiro, _Cidade de Deus_ revolucionou o cenário internacional com sua filmagem icônica, roteiro original e atuação precisa.

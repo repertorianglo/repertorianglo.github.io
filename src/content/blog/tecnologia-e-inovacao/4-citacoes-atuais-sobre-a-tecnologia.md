@@ -2,7 +2,15 @@
 titulo: 'Citações atuais sobre a Tecnologia'
 dataPublicacao: '10-21-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 3
+criadoPor: [
+  "João Pedro",
+  "Camilly",
+  "Emanuelle",
+  "Matheus Bonin",
+  "Isadora",
+  "Arthur",
+  "Mateus Christo",
+]
 ---
 
 <div class="flex justify-center">

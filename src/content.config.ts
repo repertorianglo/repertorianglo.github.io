@@ -15,8 +15,7 @@ const defineBlogCollection = (name: string) =>
         subtitulo: z.string().optional(),
         dataPublicacao: z.coerce.date(),
         responsavel: z.string().optional(),
-        grupo: z.number().optional(),
-        criadoPor: z.string().optional(),
+        criadoPor: z.array(z.string()),
       }),
   });
 
@@ -44,6 +43,7 @@ const eixosTematicos = defineCollection({
   schema: ({ image }) =>
     z.object({
       order: z.number().optional(),
+      slug: z.string(),
       href: z.string(),
       title: z.string(),
       description: z.string(),

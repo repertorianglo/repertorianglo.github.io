@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../../../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+    const eixos = await getCollection('eixosTematicos');
+
+    let postData: any = [];
+    
+    // Use Promise.all with map instead of forEach to handle async operations properly
+    await Promise.all(
+        eixos.map(async (eixo) => {
+            try {
+                const posts = await getCollection(eixo.data.slug as any) as any[];
+                posts.forEach(post => {
+                    postData.push({
+                        params: {
+                            eixoSlug: eixo.data.slug,
+                            slug: post.id, // Use post.id instead of post.data.id
+                        },
+                        props: {
+							post: post, // Pass the entire post object
+							eixo: eixo,
+						},
+                    });
+                });
+            } catch (error) {
+                console.warn(`Collection not found for eixo: ${eixo.data.slug}`, error);
+            }
+        })
+    );
+
+    return postData;
+}
+
+const { post, eixo } = Astro.props;
+const { eixoSlug } = Astro.params;
+
+const postNumber = (post as any).id.split('-')[0];
+
+const { Content } = await render(post);
+const { titulo, subtitulo, dataPublicacao, responsavel, criadoPor } = (post as any).data;
+
+---
+
+<BlogPostLayout
+	eixo={eixo}
+	titulo={titulo}
+	subtitulo={subtitulo}
+	dataPublicacao={dataPublicacao}
+	postNumber={postNumber}
+	responsavel={responsavel}
+	criadoPor={criadoPor}
+>
+	<Content />
+</BlogPostLayout>

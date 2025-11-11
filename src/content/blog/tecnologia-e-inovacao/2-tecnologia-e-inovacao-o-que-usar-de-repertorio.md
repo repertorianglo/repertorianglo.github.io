@@ -2,7 +2,16 @@
 titulo: 'Tecnologia e Inovação: o que usar de repertório?'
 dataPublicacao: '10-21-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 1
+criadoPor: [
+    "Giovane Marcon",
+    "Laura Sayuri",
+    "Brangati",
+    "Eloísa",
+    "Mateus Peres",
+    "Sophia Amaral",
+    "Sophia Conde",
+    "Ricardo",    
+]
 ---
 
 #### Uma partida de xadrez pode se tornar o seu maior repertório.

@@ -10,13 +10,13 @@ import type { CollectionEntry } from 'astro:content';
 import { getEixosTematicos } from "../common/eixosTematicos";
 
 type Props = { 
-	eixo: CollectionEntry<'eixosTematicos'>['data'];
+	eixo: CollectionEntry<'eixosTematicos'>;
 	// conteudo: CollectionEntry<'blogTecnologiaEInovacao'>[];
 }
 
 const { eixo } = Astro.props;
 
-const { title, description, image } = eixo;
+const { title, description, image } = eixo.data;
 
 const eixosTematicos = await getEixosTematicos();
 ---

@@ -2,7 +2,9 @@
 titulo: '11 milhões de toneladas por ano?'
 dataPublicacao: '10-22-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 2
+criadoPor: [
+    "Rafaela", "Lavínia", "Otávio", "Henry", "Guilherme"
+]
 ---
 
 Segundo relatório da **ONU** (Programa das Nações Unidas para o Meio Ambiente, 2021), cerca de **11 milhões de toneladas de plástico entram nos oceanos todos os anos, número que pode triplicar até 2040** se nada for feito. Esse dado mostra como a poluição está totalmente conectada ao padrão de produção e consumo da sociedade atual. A conexão é clara: o descarte incorreto e o uso excessivo de materiais não biodegradáveis geram impactos permanentes no meio ambiente.

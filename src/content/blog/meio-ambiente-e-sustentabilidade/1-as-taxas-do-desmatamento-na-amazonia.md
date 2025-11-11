@@ -2,7 +2,16 @@
 titulo: 'As taxas do desmatamento na Amazônia'
 dataPublicacao: '10-22-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 1
+criadoPor: [
+    "Giovane Marcon",
+    "Laura Sayuri",
+    "Brangati",
+    "Eloísa",
+    "Mateus Peres",
+    "Sophia Amaral",
+    "Sophia Conde",
+    "Ricardo",
+]
 ---
 
 #### De 2018 a 2024, há queda de 7% 

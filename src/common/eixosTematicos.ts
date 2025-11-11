@@ -10,3 +10,16 @@ export async function getEixosTematicos() {
     id: entry.id,
   })).sort((a, b) => (a.order || 0) - (b.order || 0));
 }
+
+export const eixosArray = [
+
+];
+
+export interface EixoTematicoI {
+  order: number;
+  slug: string;
+  href: string;
+  title: string;
+  description: string;
+  image: string | undefined;
+}

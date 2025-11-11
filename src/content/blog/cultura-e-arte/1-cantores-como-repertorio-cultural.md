@@ -3,7 +3,9 @@ titulo: 'Cantores como repertório cultural'
 subtitulo: 'O cantor Bad Bunny quebra barreiras ao se tornar famoso e dar voz às minorias.'
 dataPublicacao: '10-22-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 5
+criadoPor: [
+    "Isadora Batistella"
+]
 ---
 
 Para os vestibulandos que estão sentindo a pressão com as provas chegando, e se sentem preocupados com o repertório para a redação: lembrem-se de que não é necessário cavar tão fundo no passado e que existem muitas opções de repertórios atuais. Por isso, não fique preso apenas a fatos ou filósofos antigos. A própria música que você gosta de ouvir pode te ajudar a ter boas referências. 

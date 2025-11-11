@@ -11,13 +11,11 @@ interface Props {
         titulo: string;
         subtitulo?: string;
         dataPublicacao: Date;
-        grupo?: number;
+        responsavel?: string | undefined;
+        criadoPor: string[] | undefined;
     };
-    grupos: Array<{
-        alunos: string[];
-    }>;
 }
-const { href, heroImage, data, grupos } = Astro.props;
+const { href, heroImage, data } = Astro.props;
 ---
 <a 
     class="post-card p-4"
@@ -35,9 +33,9 @@ const { href, heroImage, data, grupos } = Astro.props;
         <div class="post-meta text-sm md:text-md">
             <div class="post-date"><FormattedDate date={data.dataPublicacao} /></div>
         </div>
-        {typeof data.grupo === 'number' && (
+        {Array.isArray(data.criadoPor) && (
             <div class="post-students text-sm md:text-md mt-1">
-                <strong>Criado por: </strong> {grupos[data.grupo].alunos.join(', ')}
+                <strong>Criado por: </strong> {data.criadoPor.join(', ')}
             </div>
         )}
     </div>

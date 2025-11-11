@@ -2,7 +2,12 @@
 titulo: 'Imagens criadas por IAs podem ser consideradas arte?'
 dataPublicacao: '10-09-2025'
 responsavel: 'Prof. Fernanda Sgura'
-grupo: 0
+criadoPor: [
+  "Lavínia Novas",
+  "Carolina Kunrath",
+  "Francisco Sgura",
+  "Vitoria Perez",
+]
 ---
 
 #### O Avanço das Inteligências Artificiais

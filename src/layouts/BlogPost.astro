@@ -15,27 +15,23 @@ type Props = {
 	postNumber: string;
 	titulo: string;
 	subtitulo?: string;
-	grupo?: number;
 	responsavel?: string;
-	criadoPor?: string;
+	criadoPor: string[];
 	dataPublicacao?: Date;
-	eixo: string;
+	eixo: CollectionEntry<'eixosTematicos'>;
 }
+
+const { titulo, subtitulo, dataPublicacao, eixo, postNumber, responsavel, criadoPor } = Astro.props;
+
+let currentResponsavel;
 
 const eixosTematicos = await getEixosTematicos();
 
-const { titulo, subtitulo, dataPublicacao, eixo, postNumber, grupo, responsavel, criadoPor } = Astro.props;
-
-let currentGrupo, currentResponsavel;
-if (!criadoPor && typeof grupo === 'number' && grupo >= 0 && grupo < grupos.length) {
-	currentGrupo = grupos[grupo];
-	currentResponsavel = currentGrupo.responsavel;
-}
-
 currentResponsavel = responsavel || currentResponsavel;
 
-const currentEixo = eixosTematicos.find(e => e.id === eixo);
-const eixoKebab = currentEixo?.id.replace(/^\d+-/, '')
+const currentEixo = eixo.data;
+
+const eixoKebab = eixo.data.slug;
 
 // Import hero image dynamically
 let heroImage;
@@ -210,7 +206,7 @@ try {
 						</div>
 						<hr />
 						<div class="text-left mt-2 text-sm">
-							<strong>Criado por:</strong> {currentGrupo?.alunos?.join(', ')}
+							<strong>Criado por:</strong> {criadoPor.join(', ')}
 							<br />
 							<strong>Responsável:</strong> {currentResponsavel}
 						</div>
